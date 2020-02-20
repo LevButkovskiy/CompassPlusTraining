@@ -1,0 +1,78 @@
+/*
+Для параметров
+hr {
+
+}
+
+Для class
+.typeClass{
+
+}
+
+Для id
+#typeClass{
+
+}
+
+Для всех элементов
+*{
+
+}
+
+Соседние селекторы
+h1 + p {
+	
+}
+
+Для h1 внутри div
+div > h1 {
+	
+}
+*/
+
+
+/*.body{
+	background-color: gold;
+}*/
+
+#logo{
+	padding-top: 8px;
+	padding-bottom: 8px;
+	text-align: left;
+}
+
+#titleHead{
+	float: right;
+	margin-right: 16px;
+	color: white;
+}
+
+#head{
+	margin: 8px;
+	background-color: darkblue;
+}
+
+#centeredText{
+	text-align: center;
+}
+
+#todo{
+	background-color: gold;
+	border-radius: 5px;
+	margin-top: 8px;
+	margin-left: 8px;
+	margin-right: 8px;
+	padding-top:0.5px;
+	padding-bottom: 0.5px;
+
+}
+
+hr {
+	height: 1px;
+	background-color: black;
+}
+
+/* All text style*/
+h1, h2, h3, h4, h5, h6, span, p, pre, blockquote, a, q, abbr, s, li{
+	font-family: "Helvetica Neue";
+}

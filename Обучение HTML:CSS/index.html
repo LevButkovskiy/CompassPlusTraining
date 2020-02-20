@@ -2,17 +2,28 @@
 <html lang="zxx">
 <head>
 	<title>Sandbox</title>
-	<meta charset="utf-8" />
+	<meta charset="utf-8"/>
+	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-	<div>
-		<h1>HTML 5 - Обучение</h1>
+<body class = "body">
+	<div id = "head">
 		<!--alt - Если картинки нет, title - Всплывающая подсказка -->
-		<img alt ="Картинка HTML5" title="HTML5" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1200px-HTML5_logo_and_wordmark.svg.png" width="100">
+		<h1 id="titleHead">HTML 5 - Обучение</h1>
+		<img id = "logo" alt ="Картинка HTML5" title="HTML5" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1200px-HTML5_logo_and_wordmark.svg.png" width="100">
+	</div>
+	<div id="todo">
+		<h3 id="centeredText">//MARK : TODO</h3>
+		<ul>
+			<li><h5>Заллогировать 15 минут</h5></li>
+			<li><h5>Заллогировать еще 20 минут</h5></li>	
+			<li><h5>И еще 15 минут</h5></li>	
+			<li><h5>10 минут за урок 6</h5></li>	
+		</ul>
+		<h3>Итого: 1 час</h3>
 	</div>
 	<hr>
 	<div>
-		<h4><a id="head">Первый элемент</a></h4>
+		<h4><a id="up">Первый элемент</a></h4>
 		<!--Все пробелы сохраняются -->
 		<pre>ААУ            ауау</pre> 
 
@@ -70,12 +81,36 @@
 	</div>
 	<hr>
 	<div>
+		<figure>
+			<img width = 250px; src="https://img5.goodfon.ru/original/2048x1365/b/c0/priroda-zmeia-piton.jpg">
+			<figcaption>Животное</figcaption>
+		</figure>
+		<details>
+			<summary>Это питон?</summary>
+			<p>Да</p>
+			<p>Нет</p>
+		</details>
+
+		<time datetime="2020-02-02">Тег тайм</time>
+	</div>
+		<hr>
+	<div>
+		<form oninput="result.value=(cm.value/2.54).toFixed(2)">
+			<p>
+				Введите длину в сантиментрах:
+				<input type="number" name="cm" autofocus="true">
+			</p>
+			<p>Длина в дюймах: <output name="result">0</output></p>
+		</form>
+	</div>
+	<hr>
+	<div>
 		<h4>Ссылки</h4>
 		<a href="https://bluebeakstd.com">Переход на сайт BlueBeakStd.com</a><br>
 		<a target="_self" href="https://bluebeakstd.com">Переход на сайт BlueBeakStd.com в том же окне</a><br>
 		<a title="Подсказка" href="https://bluebeakstd.com">Переход на сайт BlueBeakStd.com с подсказкой</a><br>
 
-		<a href="#head">Вверх</a>
+		<a href="#up">Вверх</a>
 	</div>
 </body>
 </html>
