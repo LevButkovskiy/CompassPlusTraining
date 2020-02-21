@@ -1,0 +1,120 @@
+/*
+Для параметров
+hr {
+
+}
+
+Для class
+.typeClass{
+
+}
+
+Для id
+#typeClass{
+
+}
+
+Для всех элементов
+*{
+
+}
+
+Соседние селекторы
+h1 + p {
+	
+}
+
+Для h1 внутри div
+div > h1 {
+	
+}
+*/
+
+
+/*.body{
+	background-color: gold;
+}*/
+
+.head{
+	margin: 8px;
+	background-color: #002097;
+	padding-bottom: 5px;
+}
+
+.head > #title{
+	float: right;
+	margin-right: 16px;
+	color: white;
+}
+
+.block{
+	border-radius: 5px;
+	margin-top: 8px;
+	margin-left: 8px;
+	margin-right: 8px;
+	padding-top:0.5px;
+	padding-bottom: 0.5px;
+	padding-left: 8px;
+}
+
+#todo{
+	background-color: #FFD700;
+}
+
+#form{
+	background-color: #5BA0CE;
+}
+
+.navigation{
+	background-color: #002097;
+	padding-bottom: 5px;
+}
+
+.navigation > #title{
+	float: right;
+	margin-right: 16px;
+	color: white;
+}
+
+#navigationRight ul{
+	margin-right: 8px;
+	text-align: right;
+}
+
+#navigationLeft ul{
+	margin-left: 8px;
+	text-align: left;
+}
+
+.navigation li{
+	display: inline;
+	background-color: white;
+	padding: 5px;
+	border-radius: 5px;
+	font-weight: 500;
+}
+.navigation li img{
+	margin: auto;
+	margin-right: 4px;
+}
+
+.navigation a{
+	text-decoration: none;
+	color: black !important
+}
+
+
+#centeredText{
+	text-align: center;
+}
+
+hr {
+	height: 0px;
+	width: 100%;
+	border-color: darkgray;
+}
+
+/* All text style*/
+h1, h2, h3, h4, h5, h6, span, p, pre, blockquote, a, q, abbr, s, li{
+	font-family: "Helvetica Neue";
+}

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="./style.css">
+	<title>Калькулятор</title>
+	<meta charset="utf-8"/>	
+</head>
+<body>
+	<div class="container">
+		<div class="background">
+			<div class="window">
+				<span><b>Calculator</b><h1 class="input" id="show">0</h1></span>
+			</div>
+			<br>
+			<div class="buttons">
+				<button onclick="delButton()" class="button" id="del"><h2>DEl</h2></button>
+				<button class="button" id="sign"><h2>%</h2></button>
+				<button onclick="plusButton()" class="button" id="sign"><h2>+</h2></button>
+				<br>
+				<button onclick="sevenButton()" class="button" id="number"><h2>7</h2></button>
+				<button onclick="eigthButton()" class="button" id="number"><h2>8</h2></button>
+				<button onclick="nineButton()" class="button" id="number"><h2>9</h2></button>
+				<button onclick="minusButton()" class="button" id="sign"><h2>-</h2></button>
+				<br>
+				<button onclick="fourButton()" class="button" id="number"><h2>4</h2></button>
+				<button onclick="fiveButton()" class="button" id="number"><h2>5</h2></button>
+				<button onclick="sixButton()" class="button" id="number"><h2>6</h2></button>
+				<button onclick="multiplyButton()" class="button" id="sign"><h2>x</h2></button>
+				<br>
+				<button onclick="oneButton()" class="button" id="number"><h2>1</h2></button>
+				<button onclick="twoButton()" class="button" id="number"><h2>2</h2></button>
+				<button onclick="threeButton()" class="button" id="number"><h2>3</h2></button>
+				<button onclick="devideButton()" class="button" id="sign"><h2>/</h2></button>
+				<br>
+				<button onclick="nullButton()" class="button" id="null"><h2>0</h2></button>
+				<button class="button" id="sign"><h2>.</h2></button>
+				<button onclick="equalButton()" class="button" id="sign"><h2>=</h2></button>
+				<br>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		doc = document.getElementById("show");
+		signsCount = 0;
+		sign = "";
+
+		firstNumber = 0;
+		secondNumber = null;
+
+		function show(number){
+			text = doc.innerHTML;
+			if (text == 0) {
+				doc.innerHTML = number;
+			}
+			else {
+				doc.innerHTML += number;
+			}
+		}
+
+		function saveNumber(number){
+			if(firstNumber == 0){
+				firstNumber = number
+			}
+			else if(signsCount == 0){
+				firstNumber += number
+			}
+			else{
+				if(secondNumber == null){
+					secondNumber = number;
+				}
+				else{
+					secondNumber += number
+				}
+			}
+		}
+
+		// Buttons
+		function nullButton(){
+			saveNumber("0");
+			show(0);
+		}
+
+		function oneButton(){
+			saveNumber("1");
+			show(1);
+		}
+
+		function twoButton(){
+			saveNumber("2");
+			show(2);
+		}
+
+		function threeButton(){
+			saveNumber("3");
+			show(3);
+		}
+
+		function fourButton(){
+			saveNumber("4");
+			show(4);
+		}
+
+		function fiveButton(){
+			saveNumber("5");
+			show(5);
+		}
+
+		function sixButton(){
+			saveNumber("6");
+			show(6);
+		}
+		
+		function sevenButton(){
+			saveNumber("7");
+			show(7);
+		}
+
+		function eigthButton(){
+			saveNumber("8");
+			show(8);
+		}
+
+		function nineButton(){
+			saveNumber("9");
+			show(9);
+		}
+
+		function delButton(){
+			doc.innerHTML = 0;
+			firstNumber = 0;
+			setDefaultNil();
+		}
+
+		//Signs
+		function plusButton(){
+			checkSign("+");
+		}
+
+		function minusButton(){
+			checkSign("-");
+		}
+
+		function multiplyButton(){
+			checkSign("*");
+		}
+
+		function devideButton(){
+			checkSign("/");
+		}
+
+		function equalButton(){
+			alert(sign);
+			if(sign != ""){
+				if(secondNumber != null)
+				switch(sign){
+					case "+": plus(); break;
+					case "-": minus(); break;
+					case "*": multiply(); break;
+					case "/": devide(); break;
+
+				}
+			}
+		}
+
+		function checkSign(signValue){
+			if (signsCount == 0) {
+				addSign(signValue)
+			}
+			else{
+				if(secondNumber == null){
+					addSign(signValue);
+				}
+			}
+		}
+
+		function addSign(signValue){
+			sign = signValue;
+			doc.innerHTML = firstNumber + signValue;
+			signsCount++;
+		}
+
+		// Mathematic functions
+		function plus(){
+			alert(firstNumber);
+			alert(secondNumber);
+			alert(sign);
+			sum = Number(firstNumber) + Number(secondNumber);
+			doc.innerHTML = sum;
+			firstNumber = sum;
+			setDefaultNil();
+		}
+
+		function minus(){
+			sum = Number(firstNumber) - Number(secondNumber)
+			doc.innerHTML = sum;
+			firstNumber = sum;
+			setDefaultNil();
+		}
+
+		function multiply(){
+			sum = Number(firstNumber) * Number(secondNumber)
+			doc.innerHTML = sum;
+			firstNumber = sum;
+			setDefaultNil();
+		}
+
+		function devide(){
+			sum = Number(firstNumber) / Number(secondNumber)
+			doc.innerHTML = sum;
+			firstNumber = sum;
+			setDefaultNil();
+		}
+
+		function setDefaultNil(){
+			secondNumber = null; 
+			signsCount = 0;
+			sign = "";
+		}
+
+	</script>
+</body>
+</html>
