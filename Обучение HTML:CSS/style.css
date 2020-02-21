@@ -35,41 +35,79 @@ div > h1 {
 	background-color: gold;
 }*/
 
-#logo{
-	padding-top: 8px;
-	padding-bottom: 8px;
-	text-align: left;
+.head{
+	margin: 8px;
+	background-color: darkblue;
+	padding-bottom: 5px;
 }
 
-#titleHead{
+.head > #title{
 	float: right;
 	margin-right: 16px;
 	color: white;
 }
 
-#head{
-	margin: 8px;
-	background-color: darkblue;
-}
-
-#centeredText{
-	text-align: center;
-}
-
-#todo{
-	background-color: gold;
+.block{
 	border-radius: 5px;
 	margin-top: 8px;
 	margin-left: 8px;
 	margin-right: 8px;
 	padding-top:0.5px;
 	padding-bottom: 0.5px;
+	padding-left: 8px;
+}
 
+#todo{
+	background-color: gold;
+}
+
+.navigation{
+	background-color: darkblue;
+	padding-bottom: 5px;
+}
+
+.navigation > #title{
+	float: right;
+	margin-right: 16px;
+	color: white;
+}
+
+#navigationRight ul{
+	margin-right: 8px;
+	text-align: right;
+}
+
+#navigationLeft ul{
+	margin-left: 8px;
+	text-align: left;
+}
+
+.navigation li{
+	display: inline;
+	background-color: white;
+	padding: 5px;
+	border-radius: 5px;
+	font-weight: 500;
+}
+.navigation li img{
+	margin: auto;
+	margin-right: 4px;
+}
+
+.navigation a{
+	text-decoration: none;
+	color: black !important
+}
+
+
+#centeredText{
+	text-align: center;
 }
 
 hr {
-	height: 1px;
-	background-color: black;
+	height: 0px;
+	width: 100%;
+	border-color: darkgray;
 }
 
 /* All text style*/
