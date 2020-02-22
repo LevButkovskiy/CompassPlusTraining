@@ -27,7 +27,7 @@
 			<br>
 			<div class="buttons">
 				<button onclick="delButton()" class="button" id="del"><h2>DEL</h2></button>
-				<button class="button" id="sign"><h2>%</h2></button>
+				<button onclick="percentButton()" class="button" id="sign"><h2>%</h2></button>
 				<button onclick="plusButton()" class="button" id="sign"><h2>+</h2></button>
 				<br>
 				<button onclick="sevenButton()" class="button" id="number"><h2>7</h2></button>
@@ -194,21 +194,40 @@
 			show(dot);
 		}
 
+		function percentButton(){
+			if(sign == ""){
+				firstNumber *= 0.01
+				doc.innerHTML = firstNumber + sign; 
+			}
+			else{
+				if(doc.innerHTML == firstNumber){
+					firstNumber *= 0.01;
+					doc.innerHTML = firstNumber + sign; 
+					sign = "";
+					secondNumber = "";
+				}
+				else{
+					secondNumber = firstNumber * secondNumber / 100;
+					doc.innerHTML = firstNumber + sign + secondNumber; 	
+				}
+			}
+		}
+
 		// Mathematic functions
 		function plus(){
-			sum = Number(firstNumber) + Number(secondNumber);
+			sum = (Number(firstNumber) + Number(secondNumber));;
 			doc.innerHTML = sum;
 			firstNumber = sum;
 		}
 
 		function minus(){
-			sum = Number(firstNumber) - Number(secondNumber)
+			sum = (Number(firstNumber) - Number(secondNumber));
 			doc.innerHTML = sum;
 			firstNumber = sum;
 		}
 
 		function multiply(){
-			sum = Number(firstNumber) * Number(secondNumber)
+			sum = (Number(firstNumber) * Number(secondNumber));
 			doc.innerHTML = sum;
 			firstNumber = sum;
 		}
@@ -219,7 +238,7 @@
 				setNil();
 				return ;
 			}
-			sum = Number(firstNumber) / Number(secondNumber)
+			sum = (Number(firstNumber) / Number(secondNumber));
 			doc.innerHTML = sum;
 			firstNumber = sum;
 		}
