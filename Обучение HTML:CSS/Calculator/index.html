@@ -2,7 +2,7 @@
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="./style.css">
-	<link rel="stylesheet" type="text/css" href="file:///Users/butkovskiylev/Documents/CompassPlusTraining/Обучение%20HTML:CSS/style.css">
+	<!-- <link rel="stylesheet" type="text/css" href="file:///Users/butkovskiylev/Documents/CompassPlusTraining/Обучение%20HTML:CSS/style.css"> -->
 	<title>Калькулятор</title>
 	<meta charset="utf-8"/>	
 </head>
@@ -27,6 +27,7 @@
 			<br>
 			<div class="buttons">
 				<button onclick="delButton()" class="button" id="del"><h2>DEL</h2></button>
+				<button onclick="plusMinusButton()" class="button" id="sign"><h2>+/-</h2></button>
 				<button onclick="percentButton()" class="button" id="sign"><h2>%</h2></button>
 				<button onclick="plusButton()" class="button" id="sign"><h2>+</h2></button>
 				<br>
@@ -53,196 +54,6 @@
 		</div>
 	</div>
 
-	<script type="text/javascript">
-		doc = document.getElementById("show");
-		sign = "";
-		firstNumber = "0";
-		secondNumber = null;
-
-		function show(number){
-			if(number == "."){
-				doc.innerHTML += number
-			}
-			else{
-				doc.innerHTML == "0" ? doc.innerHTML = number : doc.innerHTML += number;
-			}
-		}
-
-		function saveNumber(number){
-			show(number);
-			if(firstNumber == "0"){
-				if(number == "0" || sign != ""){
-					updateSecondNumber(number);
-					firstNumber = "0";
-				}
-				else{
-					firstNumber = number
-				}
-			}
-			else if(sign == ""){
-				firstNumber += number
-			}
-			else{
-				updateSecondNumber(number);
-			}
-		}
-
-		function updateSecondNumber(number){
-			secondNumber == null ? secondNumber = number : secondNumber += number;
-		}
-
-		function setNil(){
-			doc.innerHTML = "0"
-			firstNumber = "0";
-			secondNumber = null; 
-			sign = "";
-		}
-
-		// Buttons
-		function nullButton(){
-			saveNumber("0");
-		}
-
-		function oneButton(){
-			saveNumber("1");
-		}
-
-		function twoButton(){
-			saveNumber("2");
-		}
-
-		function threeButton(){
-			saveNumber("3");
-		}
-
-		function fourButton(){
-			saveNumber("4");
-		}
-
-		function fiveButton(){
-			saveNumber("5");
-		}
-
-		function sixButton(){
-			saveNumber("6");
-		}
-		
-		function sevenButton(){
-			saveNumber("7");
-		}
-
-		function eigthButton(){
-			saveNumber("8");
-		}
-
-		function nineButton(){
-			saveNumber("9");
-		}
-
-		//Sign's
-		function plusButton(){
-			checkSign("+");
-		}
-
-		function minusButton(){
-			checkSign("-");
-		}
-
-		function multiplyButton(){
-			checkSign("*");
-		}
-
-		function devideButton(){
-			checkSign("/");
-		}
-
-		function checkSign(signValue){
-			if (sign == "") {
-				addSign(signValue)
-			}
-			else{
-				sign = ""
-				secondNumber = null;
-				addSign(signValue);
-			}
-		}
-
-		function addSign(signValue){
-			sign = signValue;
-			doc.innerHTML = firstNumber + signValue;
-		}
-
-		// Other buttons
-		function delButton(){
-			setNil();
-		}
-
-		function equalButton(){
-			if(sign != "" && secondNumber != null){
-				switch(sign){
-					case "+": plus(); break;
-					case "-": minus(); break;
-					case "*": multiply(); break;
-					case "/": devide(); break;
-				}
-			}
-		}
-
-		function dotButton(){
-			dot = "."
-			sign == "" ? firstNumber += dot : secondNumber += dot;
-			show(dot);
-		}
-
-		function percentButton(){
-			if(sign == ""){
-				firstNumber *= 0.01
-				doc.innerHTML = firstNumber + sign; 
-			}
-			else{
-				if(doc.innerHTML == firstNumber){
-					firstNumber *= 0.01;
-					doc.innerHTML = firstNumber + sign; 
-					sign = "";
-					secondNumber = "";
-				}
-				else{
-					secondNumber = firstNumber * secondNumber / 100;
-					doc.innerHTML = firstNumber + sign + secondNumber; 	
-				}
-			}
-		}
-
-		// Mathematic functions
-		function plus(){
-			sum = (Number(firstNumber) + Number(secondNumber));;
-			doc.innerHTML = sum;
-			firstNumber = sum;
-		}
-
-		function minus(){
-			sum = (Number(firstNumber) - Number(secondNumber));
-			doc.innerHTML = sum;
-			firstNumber = sum;
-		}
-
-		function multiply(){
-			sum = (Number(firstNumber) * Number(secondNumber));
-			doc.innerHTML = sum;
-			firstNumber = sum;
-		}
-
-		function devide(){
-			if(secondNumber == 0){
-				alert("На ноль делить нельзя");
-				setNil();
-				return ;
-			}
-			sum = (Number(firstNumber) / Number(secondNumber));
-			doc.innerHTML = sum;
-			firstNumber = sum;
-		}
-
-	</script>
+	<script src="./calculator.js"></script>
 </body>
 </html>

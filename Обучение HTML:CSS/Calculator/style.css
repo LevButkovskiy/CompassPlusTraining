@@ -1,6 +1,5 @@
 *{
 	user-select: none;
-
 }
 
 .container{
@@ -51,19 +50,18 @@
 }
 
 #del{
-	background-color: cyan;
-	width: 11vw;
+	background-color: #5a1700;
 }
 
 #null{
-	background-color: #1c2629;
+	background-color: #061011;
 	width: 11vw;
 }
 
 #sign{
-	background-color: #1c2629;
+	background-color: #0d4700;
 }
 
 #number{
-	background-color: #1c2629;
+	background-color: #061011;
 }
