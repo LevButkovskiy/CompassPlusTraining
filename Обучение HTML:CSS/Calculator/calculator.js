@@ -140,12 +140,12 @@
 	function dotButton(){
 		dot = ".";
 		if(sign == "" || doc.innerHTML == firstNumber){
-			if(!isFloat(firstNumber)){
+			if(isInt(firstNumber) && firstNumber.slice(-1) != "."){
 				addNumberToFirstNumber(dot);
 			}
 		}
 		else{
-			if(!isFloat(secondNumber)){
+			if(isInt(secondNumber) && secondNumber.slice(-1) != "."){
 				addNumberToSecondNumber(dot);
 			}
 		}
@@ -204,7 +204,7 @@
 	function multiply(){
 		fPow = Math.pow(10, f(firstNumber));
 		sPow = Math.pow(10, f(secondNumber));
-		isFloat(firstNumber) ? fPow / 10 : sPow / 10;
+		isFloat(firstNumber) ? fPow *= 0.1 : sPow *= 0.1;
 		firstNumber *= fPow;
 		secondNumber *= sPow;
 		showResult(((Number(firstNumber.toFixed(15)) * Number(secondNumber.toFixed(15))) / fPow) / sPow);
@@ -251,4 +251,8 @@
 	//Other
 	function isFloat(n){
     	return Number(n) === n && n % 1 !== 0;
+	}
+
+	function isInt(n) {
+   		return n % 1 === 0;
 	}
