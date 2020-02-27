@@ -1,0 +1,21 @@
+.navbar{
+	background-color: #FFCE00;
+}
+
+.container{
+	background-color: #F5F5F5;
+	padding: 10px;
+	width: 100%;
+}
+
+#card {
+	background-color: #DCDCDC;
+}
+
+#no {
+	padding: 10px;
+}
+
+html {
+  font-size: 1rem;
+}

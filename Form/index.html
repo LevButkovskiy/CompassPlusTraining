@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <!-- Bootstap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container-fluid w-auto">
+		<nav class="navbar navbar-light">
+			<span class="navbar-brand mb-0 h1 text-black">Универсальная форма оплаты</span>
+		</nav>	
+	</div>
+	<br>
+	<div class="container w-50 rounded">
+		<h4>Перевод денежных средств</h4>
+		<form>
+			<div class="form-group">
+				<label for="srcAcctSelect">Со счета</label>
+			    <select class="custom-select" id="srcAcctSelect" required>
+			        <option selected disabled value="">Выберите...</option>
+		      </select>
+			</div>
+				<div class="form-group rounded col-12 container" id="card">
+	    			<div class="form-row">
+					    <div class="col-12 md-3 mb-3">
+		    				<label for="cardInput">На карту</label>
+					    	<input maxlength="19" placeholder="xxxx xxxx xxxx xxxx" class="form-control" id="cardInput"required>
+					    </div>
+	    			</div>
+				    <div class="form-row">
+					    <div class="col-9 md-3 mb-3">
+					    	<label for="validationDefault04">Владелец карты</label>
+					   		<input class="form-control" type="text" id="phone" required>
+				    	</div>
+				    	<div class="col-3 md-3 mb-3">
+					     	<label for="validationDefault05">CVV</label>
+					    	<input maxlength="3" placeholder="xxx" class="form-control" id="cvvInput" required>
+					    </div>
+					</div>
+				</div>
+				<div class="form-group rounded col-12" id="no">
+				    <div class="form-row">
+				   		 <div class="col-12 md-3 mb-3">
+			    				<label for="validationDefault04">Комментарий</label>
+						   		<input class="form-control" id="exampleInputPassword1" required>
+				    	</div>
+					</div>
+				    <div class="form-row">
+				   		 <div class="col-9 md-3 mb-3">
+			    				<label for="validationDefault04">Сумма</label>
+						   		<input class="form-control" id="exampleInputPassword1" required>
+				    	</div>
+				    	<div class="col-3 md-3 mb-3">
+						     	<label for="validationDefault05">Валюта</label>
+							    <select class="custom-select" id="srcAcctSelect" required>
+							    	<option selected value="RUB">₽</option>
+							    	<option value="USD">$</option>
+							    	<option value="EUR">€</option>
+						      	</select>
+					    </div>
+					</div>
+				</div>
+		<button type="submit" class="btn btn-primary">Submit</button>
+		<br>
+		<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+		</form>
+	</div>
+
+
+
+	<!-- Bootstap -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<!-- Подключение jQuery плагина Masked Input -->
+	<script src="jquery.maskedinput.min.js"></script>
+	<!-- Popper -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+
+		$(function(){
+		  //2. Получить элемент, к которому необходимо добавить маску
+		  $("#cardInput").mask("9999 9999 9999 9999");
+		  $("#cvvInput").mask("999");
+		});
+
+		initialization();
+		let count = 0;
+
+		function initialization(){
+			setSrcAccts();
+		}
+
+		function setSrcAccts(){
+			const kSrcAcctsSelect = "srcAcctSelect";
+
+			addOption(kSrcAcctsSelect, '10001');
+			addOption(kSrcAcctsSelect, '11202');	
+		}
+
+		function addOption(id, valueToSelect) {    
+		    let element = document.getElementById(id);
+			var option = document.createElement("option");
+
+			option.text = valueToSelect;
+			element.appendChild(option);
+		}
+	</script>
+</body>
+</html>
