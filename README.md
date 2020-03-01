@@ -8,5 +8,5 @@
 ***
 **Отчетные задания**
 -----------------------------------
-#### Calculator - Отчетное задание "Калькулятор"
+#### [Calculator](https://github.com/LevButkovskiy/CompassPlusTraining/tree/master/Calculator) - Отчетное задание "Калькулятор"
 #### [Form](https://github.com/LevButkovskiy/CompassPlusTraining/tree/master/Form) - Отчетное задание "Форма перевода денежных средств"
