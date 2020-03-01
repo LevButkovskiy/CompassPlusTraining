@@ -11,7 +11,7 @@
 <body>
 	<div class="container-fluid w-auto">
 		<nav class="navbar navbar-light" id="success">
-			<span class="navbar-brand mb-0 h1 text-white">Успешно</span>
+			<span class="navbar-brand mb-0 h1 text-white" id="title">Успешно</span>
 		</nav>	
 	</div>
 	<br>
@@ -28,10 +28,19 @@
 	</div>
 
 	<script type="text/javascript">
-		initf();
+		init();
 
-		function initf(){
-			setDate()
+		function init(){
+			setDate("Перевод выполнен");
+
+			let rand = Math.random();
+			if(rand < 0.1){
+				document.getElementById("title").innerHTML = "Ошибка";
+				let header = document.getElementById("success");
+				header.style.background = "#cc0000";
+				setTextToId("dateText", "Ошибка сервера - повторите операцию позднее");
+			}
+
 
 			let values = getUrlVar();
 			setTextToId("acctText", `Со счета: ${clearStirng(values['acct'].split('-')[0])}`);
@@ -59,7 +68,7 @@
 		    return resultArray; // возвращаем результат
 		}
 
-		function setDate(){
+		function setDate(text){
 			let date = new Date()
 			let hour = date.getHours();
 			let minutes = date.getMinutes();
@@ -85,8 +94,7 @@
 			  case 11: fMonth="декабря"; break;
 			}
 
-			setTextToId("dateText", "Перевод выполнен: " + day + " " + fMonth + " " + year + " в: " + hour + ":" + minutes + ":" + seconds)
-
+			setTextToId("dateText", text + ": " + day + " " + fMonth + " " + year + " в: " + hour + ":" + minutes + ":" + seconds)
 		}
 
 		function setTextToId(id, text){
