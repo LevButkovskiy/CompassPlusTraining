@@ -2,8 +2,113 @@
 <html>
 <head>
 	<title></title>
+	<meta charset="utf-8">
+	 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <!-- Bootstap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
+	<div class="container-fluid w-auto">
+		<nav class="navbar navbar-light" id="success">
+			<span class="navbar-brand mb-0 h1 text-white">Успешно</span>
+		</nav>	
+	</div>
+	<br>
+	<div class="container w-100 rounded">
+		<h4 id="dateText"></h4>
+		<hr>
+		<h6 id="acctText">Со счета:</h6>
+		<h6 id="cardText">На карту:</h6>
+		<h6 id="cardHolderText">Получатель:</h6>
+		<h6 id="commentText">Получатель:</h6>
+		<h6 id="moneyText">Получатель:</h6>
 
+		</form>
+	</div>
+
+	<script type="text/javascript">
+		initf();
+
+		function initf(){
+			setDate()
+
+			let values = getUrlVar();
+			setTextToId("acctText", `Со счета: ${clearStirng(values['acct'].split('-')[0])}`);
+			setTextToId("cardText", `На карту: ${clearStirng(values['card'])}`);
+			setTextToId("cardHolderText", `Получатель: ${clearStirng(values['cardHolder'])}`);
+			setTextToId("commentText", `Комментарий: ${clearStirng(values['comment'])}`)
+			setTextToId("moneyText", `Сумма: ${values['money'] + " " + values['currency']}`)
+
+		}
+
+		function getUrlVar(){
+		    let urlVar = decodeURIComponent(window.location.search);
+		    let arrayVar = []; // массив для хранения переменных
+		    let valueAndKey = []; // массив для временного хранения значения и имени переменной
+		    let resultArray = []; // массив для хранения переменных
+		    arrayVar = (urlVar.substr(1)).split('&'); // разбираем урл на параметры
+
+		    if(arrayVar[0] == "") return false; // если нет переменных в урле
+
+		    for (i = 0; i < arrayVar.length; i ++) { // перебираем все переменные из урла
+		        valueAndKey = arrayVar[i].split('='); // пишем в массив имя переменной и ее значение
+		        resultArray[valueAndKey[0]] = valueAndKey[1]; // пишем в итоговый массив имя переменной и ее значение
+		    }
+
+		    return resultArray; // возвращаем результат
+		}
+
+		function setDate(){
+			let date = new Date()
+			let hour = date.getHours();
+			let minutes = date.getMinutes();
+			let seconds = date.getSeconds();
+			let year = date.getFullYear();
+			let month = date.getMonth();
+			let day = date.getDate();
+			let fMonth = "";
+			// Преобразуем месяца
+			switch (month)
+			{
+			  case 0: fMonth="января"; break;
+			  case 1: fMonth="февраля"; break;
+			  case 2: fMonth="марта"; break;
+			  case 3: fMonth="апреля"; break;
+			  case 4: fMonth="мае"; break;
+			  case 5: fMonth="июня"; break;
+			  case 6: fMonth="июля"; break;
+			  case 7: fMonth="августа"; break;
+			  case 8: fMonth="сентября"; break;
+			  case 9: fMonth="октября"; break;
+			  case 10: fMonth="ноября"; break;
+			  case 11: fMonth="декабря"; break;
+			}
+
+			setTextToId("dateText", "Перевод выполнен: " + day + " " + fMonth + " " + year + " в: " + hour + ":" + minutes + ":" + seconds)
+
+		}
+
+		function setTextToId(id, text){
+			let dateEl = document.getElementById(id);
+			dateEl.innerHTML = text;
+		}
+
+		function clearStirng(string){
+			while(string.includes("+")){
+				string = string.replace("+", " ");
+			}
+
+			return string;
+		}
+
+	</script>
+
+		<!-- Bootstap -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<!-- Popper -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 </body>
 </html>

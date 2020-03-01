@@ -1,5 +1,9 @@
-.navbar{
+#main{
 	background-color: #FFCE00;
+}
+
+#success{
+	background-color: #2D9B12;
 }
 
 .container{
