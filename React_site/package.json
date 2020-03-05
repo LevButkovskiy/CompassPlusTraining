@@ -7,7 +7,7 @@
   "babel" : {
     "presets": ["react"]
   },
-  "scripts" : {
-    "build" : "node_modules/.bin/babel jsx/script.jsx -o js/script.js -w"
+  "scripts": {
+    "build": "node_modules/.bin/babel src/components/main.jsx -o src/components/main.js -w"
   }
 }

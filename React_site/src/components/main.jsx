@@ -1,6 +1,3 @@
-const DigitalClock = function (props) {
-  return <div><h1>{props.time}</h1></div>
-}
 
 class Content extends React.Component {
   constructor(props) {
@@ -15,31 +12,72 @@ class Content extends React.Component {
 
   render() {
     return <div>
-      <Button handler={this.handleClick}/>
-      <Text counter={this.state.counter}/>
+      <Post title = "BMW M340i" image="https://www.zrkuban.ru/media/P90373270_highRes_the-new-bmw-m340i-xd.jpg"/>
     </div>
   }
 }
 
-class Button extends React.Component {
-  render() {
-    return <button
-      onClick={this.props.handler}>
-      Click Me</button>
+class Post extends React.Component {
+  constructor(props) {
+    super(props);
   }
-}
 
-class Text extends React.Component {
   render() {
     return <div>
-      already clicked {this.props.counter} times!
+      <h4>{this.props.title}</h4>
+      <img src={this.props.image} width="200"></img>
+      <h5>This is car. BMW M340i. lorem lorem lorem lorem lorem</h5>
     </div>
+  }
+}
+
+class Posts extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = ({
+      data: [1, 2, 3],
+    });
+  }
+
+  render() {
+      return <div>
+              <Menu data={this.state.data}></Menu>
+      </div>
+  }
+}
+
+class Menu extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+       <div>
+         <ul>
+          {this.props.data.map((item, index) => (
+             <MenuItem text={item}/>
+          ))}
+        </ul>
+       </div>
+    );
+  }
+}
+
+class MenuItem extends React.Component {
+  render() {
+    return <li><a href = "#">{this.props.text}</a></li>
   }
 }
 
 ReactDOM.render(
   <Content />,
-  document.getElementById("content")
+  document.getElementById("post")
+);
+
+ReactDOM.render(
+  <Posts />,
+  document.getElementById("posts")
 );
 
 /*
