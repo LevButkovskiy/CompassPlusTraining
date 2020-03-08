@@ -1,9 +1,11 @@
-#main{
-	background-color: #FFCE00;
+#main{ 
+	background-color: #27ae60;
+	margin: 0;
+	padding: 10;
 }
 
-#success{
-	background-color: #2D9B12;
+#main span{
+	color: white;
 }
 
 .container{
@@ -16,6 +18,10 @@
 	background-color: #DCDCDC;
 }
 
+#card:hover{
+	background-color: #bdc3c7;
+}
+
 #no {
 	padding: 10px;
 }
@@ -24,3 +30,7 @@ html {
   font-size: 1rem;
 }
 
+.btn{
+	background-color: #27ae60;
+	color: white;
+}

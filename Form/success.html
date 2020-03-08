@@ -9,13 +9,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-	<div class="container-fluid w-auto">
-		<nav class="navbar navbar-light" id="success">
-			<span class="navbar-brand mb-0 h1 text-white" id="title">Успешно</span>
-		</nav>	
-	</div>
+	<nav class="navbar navbar-light" id="main">
+		<span class="navbar-brand mb-0 h1 text-white" id="title">Успешно</span>
+	</nav>	
 	<br>
-	<div class="container w-100 rounded">
+	<div class="container w-75 rounded">
 		<h4 id="dateText"></h4>
 		<hr>
 		<h6 id="acctText">Со счета:</h6>
@@ -23,7 +21,6 @@
 		<h6 id="cardHolderText">Получатель:</h6>
 		<h6 id="commentText">Получатель:</h6>
 		<h6 id="moneyText">Получатель:</h6>
-
 		</form>
 	</div>
 
@@ -36,11 +33,10 @@
 			let rand = Math.random();
 			if(rand < 0.1){
 				document.getElementById("title").innerHTML = "Ошибка";
-				let header = document.getElementById("success");
-				header.style.background = "#cc0000";
+				let header = document.getElementById("main");
+				header.style.background = "#d63031";
 				setTextToId("dateText", "Ошибка сервера - повторите операцию позднее");
 			}
-
 
 			let values = getUrlVar();
 			setTextToId("acctText", `Со счета: ${clearStirng(values['acct'].split('-')[0])}`);
