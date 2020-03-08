@@ -3,7 +3,8 @@ class Content extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
-    this.state = { counter: 0 };
+    this.state = { counter: 0, title: "" };
+    this.setState({ title: this.props.title });
   }
 
   handleClick() {
@@ -14,7 +15,7 @@ class Content extends React.Component {
     return React.createElement(
       "div",
       null,
-      React.createElement(Post, { title: "BMW M340i", image: "https://www.zrkuban.ru/media/P90373270_highRes_the-new-bmw-m340i-xd.jpg" })
+      React.createElement(Post, { title: this.props.title, image: "https://www.zrkuban.ru/media/P90373270_highRes_the-new-bmw-m340i-xd.jpg" })
     );
   }
 }
@@ -47,7 +48,9 @@ class Posts extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [1, 2, 3]
+      data: {
+        text: ["r3", "43", "433"]
+      }
     };
   }
 
@@ -55,7 +58,7 @@ class Posts extends React.Component {
     return React.createElement(
       "div",
       null,
-      React.createElement(Menu, { data: this.state.data })
+      React.createElement(Menu, { data: this.state.data.text, funct: this.props.funct, thif: this.props.thif })
     );
   }
 }
@@ -72,29 +75,73 @@ class Menu extends React.Component {
       React.createElement(
         "ul",
         null,
-        this.props.data.map((item, index) => React.createElement(MenuItem, { text: item }))
+        this.props.data.map((item, index) => React.createElement(MenuItem, { text: item, funct: this.props.funct, thif: this.props.thif }))
       )
     );
   }
 }
 
 class MenuItem extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log("I;m here");
+  }
+
+  up() {
+    console.log("AAA, clicked");
+    console.log(this.props.thif);
+    this.props.thif.updateImage(this.props.text);
+  }
   render() {
     return React.createElement(
       "li",
       null,
       React.createElement(
         "a",
-        { href: "#" },
+        { onClick: this.up.bind(this), href: "#" },
         this.props.text
       )
     );
   }
 }
 
-ReactDOM.render(React.createElement(Content, null), document.getElementById("post"));
+class NewsBlock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: "default"
+    };
+  }
 
-ReactDOM.render(React.createElement(Posts, null), document.getElementById("posts"));
+  updateImage(titleText) {
+    console.log("OAOAOA");
+    console.log(this);
+    this.setState({
+      title: titleText
+    });
+  }
+
+  //Delegaete needed here, updateImaee => delegate, after Delegating, set state to Post
+
+  render() {
+    return React.createElement(
+      "div",
+      { className: "form-row p-2" },
+      React.createElement(
+        "div",
+        { className: "form-group p-2" },
+        React.createElement(Content, { title: this.state.title })
+      ),
+      React.createElement(
+        "div",
+        { className: "form-group p-2" },
+        React.createElement(Posts, { funct: this.updateImage, thif: this })
+      )
+    );
+  }
+}
+
+ReactDOM.render(React.createElement(NewsBlock, null), document.getElementById("newsBlock"));
 
 /*
 //Перед тем как создаться

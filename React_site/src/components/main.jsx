@@ -3,7 +3,8 @@ class Content extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this)
-    this.state = {counter: 0}
+    this.state = {counter: 0, title: ""}
+    this.setState({title: this.props.title})
   }
 
   handleClick() {
@@ -12,7 +13,7 @@ class Content extends React.Component {
 
   render() {
     return <div>
-      <Post title = "BMW M340i" image="https://www.zrkuban.ru/media/P90373270_highRes_the-new-bmw-m340i-xd.jpg"/>
+      <Post title={this.props.title} image="https://www.zrkuban.ru/media/P90373270_highRes_the-new-bmw-m340i-xd.jpg"/>
     </div>
   }
 }
@@ -35,13 +36,15 @@ class Posts extends React.Component {
   constructor(props) {
     super(props);
     this.state = ({
-      data: [1, 2, 3],
+      data: {
+        text: ["r3", "43", "433"]
+      },
     });
   }
 
   render() {
       return <div>
-              <Menu data={this.state.data}></Menu>
+        <Menu data={this.state.data.text} funct={this.props.funct} thif={this.props.thif}></Menu>
       </div>
   }
 }
@@ -56,7 +59,7 @@ class Menu extends React.Component {
        <div>
          <ul>
           {this.props.data.map((item, index) => (
-             <MenuItem text={item}/>
+             <MenuItem text={item} funct={this.props.funct} thif={this.props.thif}/>
           ))}
         </ul>
        </div>
@@ -65,19 +68,55 @@ class Menu extends React.Component {
 }
 
 class MenuItem extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log("I;m here")
+  }
+
+  up(){
+    console.log("AAA, clicked")
+    console.log(this.props.thif)
+    this.props.thif.updateImage(this.props.text)
+  }
   render() {
-    return <li><a href = "#">{this.props.text}</a></li>
+    return <li><a onClick={this.up.bind(this)} href="#">{this.props.text}</a></li>
   }
 }
 
-ReactDOM.render(
-  <Content />,
-  document.getElementById("post")
-);
+class NewsBlock extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = ({
+      title: "default",
+    })
+  }
+
+  updateImage(titleText) {
+    console.log("OAOAOA")
+    console.log(this)
+    this.setState({
+      title: titleText,
+    })
+  }
+  TODO : Refactoring
+  //Delegaete needed here, updateImaee => delegate, after Delegating, set state to Post
+
+  render() {
+    return <div className="form-row p-2">
+        <div className="form-group p-2">
+          <Content title={this.state.title}/>
+        </div>
+        <div className="form-group p-2">
+          <Posts funct={this.updateImage} thif={this}/>
+        </div>
+    </div>
+  }
+}
+
 
 ReactDOM.render(
-  <Posts />,
-  document.getElementById("posts")
+  <NewsBlock />,
+  document.getElementById("newsBlock")
 );
 
 /*
