@@ -1,8 +1,53 @@
-#content {
-  background-color: lightgray;
+#post {
+  background-color: #ecf0f1;
+  color: black;
 }
 
-#newsBlock {
-  padding: 5;
-  background-color: lightgray;
+.circle {
+  width: 15px;
+  height: 15px;
+  background-color: #2980b9;
+  border-radius: 7.5px;
+  float:left;
+}
+
+html body {
+  background-color: white;
+  color: black;
+}
+
+.navbar {
+  background-color: #227093;
+  color: #bdc3c7;
+}
+
+.navbar a {
+  color: white;
+}
+
+.menu{
+  background-color: #bdc3c7;
+}
+
+.menu ul li{
+  background: none;
+  border: none;
+}
+
+.menu a{
+  color: white;
+}
+
+.menu li:hover{
+  background-color: #34495e;
+}
+
+.menu a:hover{
+  color: white;
+}
+
+.postImage {
+  height: 30vw;
+  margin-bottom: 5px;
+  margin-top: 5px;
 }

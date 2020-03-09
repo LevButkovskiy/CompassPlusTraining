@@ -1,22 +1,27 @@
+const posts = [{
+  sphere: "Автомобили",
+  title: "BMW M340i",
+  image: "https://photo2.tinhte.vn/data/attachment-files/2020/01/4878265_bmw-m340i.jpg",
+  description: "This is car. BMW M340i"
+}, {
+  sphere: "Программирование",
+  title: "Разработка React",
+  image: "https://technographx.com/wp-content/uploads/2019/05/Javascript-Frameworks-2019-2.png",
+  description: "Язык программирования React + JS + HTML + CSS"
+}, {
+  sphere: "Животные",
+  title: "Кошка села и сидитт",
+  image: "https://avatars.mds.yandex.net/get-pdb/51720/91e24d4c-b631-4fa2-9ba0-33632a5903a2/s1200",
+  description: "Какая-то новость про кошку + тест вертикальных изображений"
+}];
 
 class Content extends React.Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
-    this.state = { counter: 0, title: "" };
-    this.setState({ title: this.props.title });
-  }
-
-  handleClick() {
-    this.setState({ counter: ++this.state.counter });
   }
 
   render() {
-    return React.createElement(
-      "div",
-      null,
-      React.createElement(Post, { title: this.props.title, image: "https://www.zrkuban.ru/media/P90373270_highRes_the-new-bmw-m340i-xd.jpg" })
-    );
+    return React.createElement(Post, { data: this.props.data });
   }
 }
 
@@ -30,35 +35,68 @@ class Post extends React.Component {
       "div",
       null,
       React.createElement(
+        "p",
+        { className: "circle" },
+        React.createElement(
+          "h6",
+          null,
+          "\xA0",
+          this.props.data.sphere
+        )
+      ),
+      React.createElement(
         "h4",
         null,
-        this.props.title
+        React.createElement(
+          "b",
+          null,
+          this.props.data.title
+        )
       ),
-      React.createElement("img", { src: this.props.image, width: "200" }),
+      React.createElement("img", { className: "postImage", src: this.props.data.image }),
       React.createElement(
         "h5",
         null,
-        "This is car. BMW M340i. lorem lorem lorem lorem lorem"
+        this.props.data.description
       )
     );
   }
 }
 
-class Posts extends React.Component {
+class NewsBlock extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: {
-        text: ["r3", "43", "433"]
-      }
+      sphere: posts[0].sphere,
+      title: posts[0].title,
+      image: posts[0].image,
+      description: posts[0].description
     };
+  }
+
+  updatePost(sphere, title, image, description) {
+    this.setState({
+      sphere: sphere,
+      title: title,
+      image: image,
+      description: description
+    });
   }
 
   render() {
     return React.createElement(
       "div",
-      null,
-      React.createElement(Menu, { data: this.state.data.text, funct: this.props.funct, thif: this.props.thif })
+      { className: "form-row" },
+      React.createElement(
+        "div",
+        { className: "form-group col-9 p-3", id: "post" },
+        React.createElement(Content, { data: this.state })
+      ),
+      React.createElement(
+        "div",
+        { className: "form-group col-3 menu" },
+        React.createElement(Menu, { self: this })
+      )
     );
   }
 }
@@ -70,13 +108,9 @@ class Menu extends React.Component {
 
   render() {
     return React.createElement(
-      "div",
-      null,
-      React.createElement(
-        "ul",
-        null,
-        this.props.data.map((item, index) => React.createElement(MenuItem, { text: item, funct: this.props.funct, thif: this.props.thif }))
-      )
+      "ul",
+      { className: "list-group" },
+      posts.map((item, index) => React.createElement(MenuItem, { data: item, self: this.props.self }))
     );
   }
 }
@@ -84,64 +118,26 @@ class Menu extends React.Component {
 class MenuItem extends React.Component {
   constructor(props) {
     super(props);
-    console.log("I;m here");
   }
 
-  up() {
-    console.log("AAA, clicked");
-    console.log(this.props.thif);
-    this.props.thif.updateImage(this.props.text);
+  updatePost() {
+    this.props.self.updatePost(this.props.data.sphere, this.props.data.title, this.props.data.image, this.props.data.description);
   }
+
   render() {
     return React.createElement(
       "li",
-      null,
+      { className: "list-group-item" },
       React.createElement(
         "a",
-        { onClick: this.up.bind(this), href: "#" },
-        this.props.text
+        { onClick: this.updatePost.bind(this), href: "#" },
+        this.props.data.title
       )
     );
   }
 }
 
-class NewsBlock extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      title: "default"
-    };
-  }
-
-  updateImage(titleText) {
-    console.log("OAOAOA");
-    console.log(this);
-    this.setState({
-      title: titleText
-    });
-  }
-
-  //Delegaete needed here, updateImaee => delegate, after Delegating, set state to Post
-
-  render() {
-    return React.createElement(
-      "div",
-      { className: "form-row p-2" },
-      React.createElement(
-        "div",
-        { className: "form-group p-2" },
-        React.createElement(Content, { title: this.state.title })
-      ),
-      React.createElement(
-        "div",
-        { className: "form-group p-2" },
-        React.createElement(Posts, { funct: this.updateImage, thif: this })
-      )
-    );
-  }
-}
-
-ReactDOM.render(React.createElement(NewsBlock, null), document.getElementById("newsBlock"));
+ReactDOM.render(React.createElement(NewsBlock, null), document.getElementsByClassName("newsBlock")[0]);
 
 /*
 //Перед тем как создаться
