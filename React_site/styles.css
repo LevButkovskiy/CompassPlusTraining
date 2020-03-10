@@ -4,11 +4,20 @@
 }
 
 .circle {
+  background-color: #2980b9;
+  float:left;
+}
+
+.circle.c-1 {
   width: 15px;
   height: 15px;
-  background-color: #2980b9;
   border-radius: 7.5px;
-  float:left;
+}
+
+.circle.c-2 {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
 }
 
 html body {
@@ -50,4 +59,29 @@ html body {
   height: 30vw;
   margin-bottom: 5px;
   margin-top: 5px;
+}
+
+a.disliked {
+  color: #4a69bd;
+}
+
+a.liked {
+  color: #eb2f06;
+}
+
+.sphereItem {
+  margin-left: 10px;
+  padding: 2px;
+  border-radius: 15px;
+  background-color: #2980b9;
+  text-align: center;
+  flex: auto;
+}
+
+.sphereItem > a {
+  color: white;
+}
+
+.sphereMenu {
+  flex: auto;
 }

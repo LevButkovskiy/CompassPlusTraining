@@ -1,18 +1,36 @@
-const posts = [{
+const data = [{
   sphere: "Автомобили",
-  title: "BMW M340i",
-  image: "https://photo2.tinhte.vn/data/attachment-files/2020/01/4878265_bmw-m340i.jpg",
-  description: "This is car. BMW M340i"
+  color: "#2980b9",
+  news: [{
+    sphere: "Автомобили",
+    title: "BMW M340i",
+    image: "https://photo2.tinhte.vn/data/attachment-files/2020/01/4878265_bmw-m340i.jpg",
+    description: "This is car. BMW M340i",
+    liked: "false"
+  }, {
+    sphere: "Автомобили",
+    title: "VW Polo 2020",
+    image: "https://avtonovostidnya.ru/wp-content/uploads/2018/12/Novyy-Volkswagen-Polo.jpeg",
+    description: "Теперь поло похож на рапид еще больше",
+    liked: "false"
+  }, {
+    sphere: "Автомобили",
+    title: "Renault Duster",
+    image: "https://bezrulya.ru/images/publish/1/5/4266/gallery/renault_duster__2.jpg",
+    description: "Абсолютно новый Renault Duster",
+    liked: "false"
+  }]
 }, {
-  sphere: "Программирование",
-  title: "Разработка React",
-  image: "https://technographx.com/wp-content/uploads/2019/05/Javascript-Frameworks-2019-2.png",
-  description: "Язык программирования React + JS + HTML + CSS"
+  sphere: "Доп. тест",
+  color: "#b71540"
 }, {
-  sphere: "Животные",
-  title: "Кошка села и сидитт",
-  image: "https://avatars.mds.yandex.net/get-pdb/51720/91e24d4c-b631-4fa2-9ba0-33632a5903a2/s1200",
-  description: "Какая-то новость про кошку + тест вертикальных изображений"
+  sphere: "СФера 2",
+  color: "#f6b93b"
+}, {
+  sphere: "Сфера 3",
+  color: "#78e08f"
+}, {
+  sphere: "Сфера 4"
 }];
 
 class Content extends React.Component {
@@ -36,7 +54,7 @@ class Post extends React.Component {
       null,
       React.createElement(
         "p",
-        { className: "circle" },
+        { className: "circle c-1" },
         React.createElement(
           "h6",
           null,
@@ -67,10 +85,10 @@ class NewsBlock extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      sphere: posts[0].sphere,
-      title: posts[0].title,
-      image: posts[0].image,
-      description: posts[0].description
+      sphere: data[0].news[0].sphere,
+      title: data[0].news[0].title,
+      image: data[0].news[0].image,
+      description: data[0].news[0].description
     };
   }
 
@@ -110,7 +128,7 @@ class Menu extends React.Component {
     return React.createElement(
       "ul",
       { className: "list-group" },
-      posts.map((item, index) => React.createElement(MenuItem, { data: item, self: this.props.self }))
+      data[0].news.map((item, index) => React.createElement(MenuItem, { data: item, index: index, self: this.props.self }))
     );
   }
 }
@@ -126,18 +144,66 @@ class MenuItem extends React.Component {
 
   render() {
     return React.createElement(
-      "li",
-      { className: "list-group-item" },
+      "a",
+      { onClick: this.updatePost.bind(this), href: "#" },
       React.createElement(
-        "a",
-        { onClick: this.updatePost.bind(this), href: "#" },
+        "li",
+        { className: "list-group-item" },
         this.props.data.title
       )
     );
   }
 }
 
+class SpherePicker extends React.Component {
+  render() {
+    return React.createElement(SphereMenu, null);
+  }
+}
+
+class SphereMenu extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return React.createElement(
+      "div",
+      { className: "form-row sphereMenu" },
+      data.map((item, index) => React.createElement(SphereMenuItem, { color: item.color, title: item.sphere, index: index }))
+    );
+  }
+}
+
+class SphereMenuItem extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return React.createElement(
+      "div",
+      { className: "form-group sphereItem", style: { backgroundColor: this.props.color } },
+      React.createElement(
+        "a",
+        { href: "#" },
+        React.createElement(
+          "small",
+          null,
+          React.createElement(
+            "b",
+            null,
+            this.props.title
+          )
+        )
+      )
+    );
+  }
+}
+
 ReactDOM.render(React.createElement(NewsBlock, null), document.getElementsByClassName("newsBlock")[0]);
+
+ReactDOM.render(React.createElement(SpherePicker, null), document.getElementsByClassName("spherePicker")[0]);
 
 /*
 //Перед тем как создаться
