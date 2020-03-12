@@ -286,48 +286,95 @@ class Post extends React.Component {
       sphere: data[this.props.sphere].sphere,
       title: this.props.data.title,
       description: this.props.data.description,
-      image: this.props.data.image
+      image: this.props.data.image,
+      loading: false
     };
   }
 
   componentWillReceiveProps(props) {
-    this.setState({
-      color: data[props.sphere].color,
-      sphere: data[props.sphere].sphere,
-      title: props.data.title,
-      description: props.data.description,
-      image: props.data.image
-    });
+    this.calculateMovements(props);
+  }
+
+  calculateMovements(props) {
+    this.setState({ loading: true });
+    setTimeout(function () {
+      this.setState({
+        color: data[props.sphere].color,
+        sphere: data[props.sphere].sphere,
+        title: props.data.title,
+        description: props.data.description,
+        image: props.data.image,
+        loading: false
+      });
+    }.bind(this), 150);
   }
 
   render() {
     return React.createElement(
       "div",
       null,
+      React.createElement(Loading, { hidden: this.state.loading }),
       React.createElement(
-        "p",
-        { className: "circle c-1", style: { backgroundColor: this.state.color } },
+        "div",
+        { style: { display: this.state.loading ? "none" : "block" } },
         React.createElement(
-          "h6",
-          null,
-          "\xA0",
-          this.state.sphere
-        )
-      ),
-      React.createElement(
-        "h4",
-        null,
+          "p",
+          { className: "circle c-1", style: { backgroundColor: this.state.color } },
+          React.createElement(
+            "h6",
+            null,
+            "\xA0",
+            this.state.sphere
+          )
+        ),
         React.createElement(
-          "b",
+          "h4",
           null,
-          this.state.title
+          React.createElement(
+            "b",
+            null,
+            this.state.title
+          )
+        ),
+        React.createElement("img", { className: "postImage", src: this.state.image }),
+        React.createElement(
+          "h5",
+          null,
+          this.state.description
         )
-      ),
-      React.createElement("img", { className: "postImage", src: this.state.image }),
+      )
+    );
+  }
+}
+
+class Loading extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hidden: props.hidden
+    };
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState({ hidden: props.hidden });
+  }
+
+  render() {
+    return React.createElement(
+      "div",
+      { style: { display: this.state.hidden ? "block" : "none" } },
       React.createElement(
-        "h5",
-        null,
-        this.state.description
+        "div",
+        { className: "d-flex justify-content-center" },
+        React.createElement(
+          "div",
+          { className: "spinner-border text-primary", style: { width: '2rem', height: '2rem' }, role: "status" },
+          React.createElement(
+            "span",
+            { className: "sr-only" },
+            "Loading..."
+          )
+        )
       )
     );
   }

@@ -272,26 +272,60 @@ class Post extends React.Component {
       title: this.props.data.title,
       description: this.props.data.description,
       image: this.props.data.image,
+      loading: false,
     });
   }
 
   componentWillReceiveProps(props){
-    this.setState({
-      color: data[props.sphere].color,
-      sphere: data[props.sphere].sphere,
-      title: props.data.title,
-      description: props.data.description,
-      image: props.data.image,
-    });
+    this.calculateMovements(props)
   }
 
+  calculateMovements(props) {
+      this.setState({ loading: true});
+      setTimeout(function() {
+        this.setState({
+          color: data[props.sphere].color,
+          sphere: data[props.sphere].sphere,
+          title: props.data.title,
+          description: props.data.description,
+          image: props.data.image,
+          loading: false,
+        });
+      }.bind(this), 150);
+  }
 
   render() {
     return <div>
-      <p className="circle c-1" style={{backgroundColor: this.state.color}}><h6>&nbsp;{this.state.sphere}</h6></p>
-      <h4><b>{this.state.title}</b></h4>
-      <img className="postImage" src={this.state.image}></img>
-      <h5>{this.state.description}</h5>
+      <Loading hidden = {this.state.loading}/>
+      <div style={{display: this.state.loading ? "none": "block"}}>
+        <p className="circle c-1" style={{backgroundColor: this.state.color}}><h6>&nbsp;{this.state.sphere}</h6></p>
+        <h4><b>{this.state.title}</b></h4>
+        <img className="postImage" src={this.state.image}></img>
+        <h5>{this.state.description}</h5>
+      </div>
+    </div>
+  }
+}
+
+class Loading extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = ({
+      hidden: props.hidden,
+    });
+  }
+
+  componentWillReceiveProps(props){
+    this.setState({hidden: props.hidden})
+  }
+
+  render(){
+    return <div style={{display: this.state.hidden ? "block" : "none"}}>
+      <div className="d-flex justify-content-center">
+        <div className="spinner-border text-primary" style={{width: '2rem', height: '2rem'}} role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
+      </div>
     </div>
   }
 }
