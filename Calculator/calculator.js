@@ -204,10 +204,17 @@
 	function multiply(){
 		fPow = Math.pow(10, f(firstNumber));
 		sPow = Math.pow(10, f(secondNumber));
-		isFloat(firstNumber) ? fPow *= 0.1 : sPow *= 0.1;
+		if(fPow == sPow == 1){
+			showResult(firstNumber * secondNumber)
+			return ;
+		}
 		firstNumber *= fPow;
 		secondNumber *= sPow;
-		showResult(((Number(firstNumber.toFixed(15)) * Number(secondNumber.toFixed(15))) / fPow) / sPow);
+		let result = Number(firstNumber) * Number(secondNumber)
+		result = isFloat(firstNumber / fPow) ? isFloat(secondNumber / sPow) ? result / fPow / sPow : result / fPow : result / sPow
+		firstNumber /= fPow;
+		secondNumber /= sPow;
+		showResult(result);
 	}
 
 	function devide(){
@@ -229,7 +236,7 @@
 
 	//Additional functions 
 	function showResult(result){
-		doc.innerHTML = result;
+		doc.innerHTML = result.toString();
 		firstNumber = result;
 	}
 
@@ -250,7 +257,7 @@
 
 	//Other
 	function isFloat(n){
-    	return Number(n) === n && n % 1 !== 0;
+    	return n % 1 !== 0;
 	}
 
 	function isInt(n) {
