@@ -9,4 +9,8 @@
 **Отчетные задания**
 -----------------------------------
 #### [Calculator](https://github.com/LevButkovskiy/CompassPlusTraining/tree/master/Calculator) - Отчетное задание "Калькулятор"
-#### [Form](https://github.com/LevButkovskiy/CompassPlusTraining/tree/master/Form) - Отчетное задание "Форма перевода денежных средств"
+#### :white_check_mark: [Form](https://github.com/LevButkovskiy/CompassPlusTraining/tree/master/Form) - Отчетное задание "Форма перевода денежных средств"
+#### [React_site](https://github.com/LevButkovskiy/CompassPlusTraining/tree/master/React_site) - Отчетное задание "Single page application"
+-----------------------------------
+### Want todo
+ > Тут будет то, что хотелось бы изучить. Помимо плана
