@@ -51,7 +51,7 @@
 			    <div class="form-row">
 			   		 <div class="col-9 md-3 mb-3">
 		    				<label for="money">Сумма</label>
-					   		<input name="money" class="form-control" id="money" required>
+					   		<input type="text" name="money" class="form-control" id="money" required>
 			    	</div>
 			    	<div class="col-3 md-3 mb-3">
 					     	<label for="currency">Валюта</label>
@@ -93,6 +93,13 @@
 		function initialization() {
 			setSrcAccts();
 		}
+
+		$("#money").keypress(function (e){
+		  var charCode = (e.which) ? e.which : e.keyCode;
+		  if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+		    return false;
+		  }
+		});
 
 		function setSrcAccts() {
 			const kSrcAcctsSelect = "srcAcctSelect";
