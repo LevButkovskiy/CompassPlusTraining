@@ -1,21 +1,18 @@
 const data = [{
   sphere: "Автомобили",
-  color: "#2980b9",
+  color: "#0fbcf9",
   news: [{
     title: "BMW M340i",
     image: "https://photo2.tinhte.vn/data/attachment-files/2020/01/4878265_bmw-m340i.jpg",
-    description: "This is car. BMW M340i",
-    liked: "false"
+    description: "This is car. BMW M340i"
   }, {
     title: "VW Polo 2020",
     image: "https://avtonovostidnya.ru/wp-content/uploads/2018/12/Novyy-Volkswagen-Polo.jpeg",
-    description: "Теперь поло похож на рапид еще больше",
-    liked: "false"
+    description: "Теперь поло похож на рапид еще больше"
   }, {
     title: "Renault Duster",
     image: "https://bezrulya.ru/images/publish/1/5/4266/gallery/renault_duster__2.jpg",
-    description: "Абсолютно новый Renault Duster",
-    liked: "false"
+    description: "Абсолютно новый Renault Duster"
   }]
 }, {
   sphere: "Недвижимость",
@@ -23,18 +20,15 @@ const data = [{
   news: [{
     title: "Квартира у моря",
     image: "https://turbo.network/hqroom/image/upload/c_thumb,f_auto,g_faces,h_906,q_90,w_1360/v1550528573/post/d3c81c8f52300ea3cadf1817/1d4db0951a4b7996Ii2E4tuJjZ1muJlW.jpg",
-    description: "Квартира там, где нет коронавируса",
-    liked: "false"
+    description: "Квартира там, где нет коронавируса"
   }, {
     title: "Квартира в горах",
     image: "https://avatars.mds.yandex.net/get-pdb/211794/1504b89e-a2a7-4349-97f2-103535457b02/s1200?webp=false",
-    description: "Только сегодня - бесплатно",
-    liked: "false"
+    description: "Только сегодня - бесплатно"
   }, {
     title: "Двухэтажная квартира",
     image: "https://ostrnum.com/wp-content/uploads/2019/11/Interior_Design_Living_room_Sofa_545661_1280x853.jpg",
-    description: "Квартира как у Геннадия Букина",
-    liked: "false"
+    description: "Квартира как у Геннадия Букина"
   }]
 }, {
   sphere: "Фрукты",
@@ -42,48 +36,56 @@ const data = [{
   news: [{
     title: "Яблоко",
     image: "https://aullyqian.files.wordpress.com/2014/04/apple-side.jpg",
-    description: "Это яблоко",
-    liked: "false"
+    description: "Это яблоко"
   }, {
     title: "Мандарин",
     image: "https://avatars.mds.yandex.net/get-zen_doc/1634555/pub_5df499de027a1500b000c6f3_5df49ccb8d5b5f00b0261bae/scale_1200",
-    description: "Это мандарин",
-    liked: "false"
+    description: "Это мандарин"
   }, {
     title: "Помидор",
     image: "https://i.sunhome.ru/journal/221/polza-tomatov.orig.jpg",
-    description: "Помидор или томат? Это фрукт",
-    liked: "false"
+    description: "Помидор или томат? Это фрукт"
   }, {
     title: "Киви",
     image: "https://i.pinimg.com/originals/b5/ed/27/b5ed27930f68d86ffebc53e945f082a4.jpg",
-    description: "Это - киви",
-    liked: "false"
+    description: "Это - киви"
+  }, {
+    title: "Питахайя",
+    image: "https://gastritinform.ru/wp-content/uploads/2019/12/mNiArlf4s0M.jpg",
+    description: "Еще называют драконий фрукт"
   }]
 }, {
   sphere: "Сфера 3",
   color: "#78e08f",
   news: [{
-    sphere: "Автомобили53",
     title: "BMW M340i",
     image: "https://photo2.tinhte.vn/data/attachment-files/2020/01/4878265_bmw-m340i.jpg",
-    description: "This is car. BMW M340i",
-    liked: "false"
+    description: "This is car. BMW M340i"
   }, {
-    sphere: "Автомобили54",
     title: "VW Polo 2020",
     image: "https://avtonovostidnya.ru/wp-content/uploads/2018/12/Novyy-Volkswagen-Polo.jpeg",
-    description: "Теперь поло похож на рапид еще больше",
-    liked: "false"
+    description: "Теперь поло похож на рапид еще больше"
   }, {
-    sphere: "Автомобили55",
     title: "Renault Duster",
     image: "https://bezrulya.ru/images/publish/1/5/4266/gallery/renault_duster__2.jpg",
-    description: "Абсолютно новый Renault Duster",
-    liked: "false"
+    description: "Абсолютно новый Renault Duster"
   }]
 }, {
-  sphere: "Сфера 4"
+  sphere: "Сфера 4",
+  color: "#78e08f",
+  news: [{
+    title: "BMW M340i",
+    image: "https://photo2.tinhte.vn/data/attachment-files/2020/01/4878265_bmw-m340i.jpg",
+    description: "This is car. BMW M340i"
+  }, {
+    title: "VW Polo 2020",
+    image: "https://avtonovostidnya.ru/wp-content/uploads/2018/12/Novyy-Volkswagen-Polo.jpeg",
+    description: "Теперь поло похож на рапид еще больше"
+  }, {
+    title: "Renault Duster",
+    image: "https://bezrulya.ru/images/publish/1/5/4266/gallery/renault_duster__2.jpg",
+    description: "Абсолютно новый Renault Duster"
+  }]
 }];
 
 class Container extends React.Component {
@@ -123,13 +125,14 @@ class Container extends React.Component {
 class SphereMenu extends React.Component {
   constructor(props) {
     super(props);
+    console.log(data[0].news.length);
   }
 
   render() {
     return React.createElement(
-      "div",
-      { className: "form-row sphereMenu" },
-      data.map((item, index) => React.createElement(SphereMenuItem, { color: item.color, title: item.sphere, index: index, handler: this.props.handler }))
+      "ul",
+      { className: "list-inline sphereMenu" },
+      data.map((item, index) => React.createElement(SphereMenuItem, { color: item.color, title: item.sphere, number: item.news.length, index: index, handler: this.props.handler }))
     );
   }
 }
@@ -138,8 +141,9 @@ class SphereMenuItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      color: this.props.color,
-      title: this.props.title
+      color: props.color,
+      title: props.title,
+      number: props.number
     };
   }
 
@@ -149,19 +153,29 @@ class SphereMenuItem extends React.Component {
 
   render() {
     return React.createElement(
-      "div",
-      { className: "form-group sphereItem", style: { backgroundColor: this.state.color } },
+      "a",
+      { onClick: this.handleClick.bind(this), href: "#" },
       React.createElement(
-        "a",
-        { onClick: this.handleClick.bind(this), href: "#" },
+        "li",
+        { className: "list-inline-item sphereItem", style: { backgroundColor: this.state.color } },
         React.createElement(
-          "small",
-          null,
+          "span",
+          { id: "sphereTitle" },
           React.createElement(
-            "b",
+            "small",
             null,
-            this.state.title
+            React.createElement(
+              "b",
+              null,
+              this.state.title
+            )
           )
+        ),
+        " \xA0",
+        React.createElement(
+          "span",
+          { className: "badge badge-light" },
+          this.state.number
         )
       )
     );
