@@ -132,7 +132,13 @@ class SphereMenu extends React.Component {
     return React.createElement(
       "ul",
       { className: "list-inline sphereMenu" },
-      data.map((item, index) => React.createElement(SphereMenuItem, { color: item.color, title: item.sphere, number: item.news.length, index: index, handler: this.props.handler }))
+      data.map((item, index) => React.createElement(SphereMenuItem, {
+        color: item.color,
+        title: item.sphere,
+        number: item.news.length,
+        key: index,
+        handler: this.props.handler
+      }))
     );
   }
 }
@@ -242,7 +248,12 @@ class Menu extends React.Component {
     return React.createElement(
       "ul",
       { className: "list-group" },
-      data[this.props.sphere].news.map((item, index) => React.createElement(MenuItem, { data: item, index: index, self: this.props.self, sphere: this.props.sphere }))
+      data[this.props.sphere].news.map((item, index) => React.createElement(MenuItem, {
+        data: item,
+        key: index,
+        self: this.props.self,
+        sphere: this.props.sphere
+      }))
     );
   }
 }
@@ -253,7 +264,7 @@ class MenuItem extends React.Component {
   }
 
   handleClick() {
-    this.props.self.updatePost(this.props.data.title, this.props.data.image, this.props.data.description, this.props.index);
+    this.props.self.updatePost(this.props.data.title, this.props.data.image, this.props.data.description, this.props.key);
   }
 
   render() {

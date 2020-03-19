@@ -134,8 +134,12 @@ class Container extends React.Component {
 
   render() {
     return <div>
-      <div className="sphereMenu"><SphereMenu handler={this.updateSphere.bind(this)}/></div>
-      <div className="newsBlock"><NewsBlock sphere={this.state.sphere}/></div>
+      <div className="sphereMenu">
+        <SphereMenu handler={this.updateSphere.bind(this)}/>
+      </div>
+      <div className="newsBlock">
+        <NewsBlock sphere={this.state.sphere}/>
+      </div>
     </div>
   }
 }
@@ -149,7 +153,14 @@ class SphereMenu extends React.Component {
   render() {
     return <ul className="list-inline sphereMenu">
             {data.map((item, index) => (
-               <SphereMenuItem color={item.color} title={item.sphere} number={item.news.length} index={index} handler={this.props.handler}/>
+                 <SphereMenuItem
+                    color={item.color}
+                    title={item.sphere}
+                    number={item.news.length}
+                    key={index}
+                    handler={this.props.handler}
+                  />
+
             ))}
         </ul>
   }
@@ -232,7 +243,12 @@ class Menu extends React.Component {
   render() {
     return (<ul className="list-group">
           {data[this.props.sphere].news.map((item, index) => (
-             <MenuItem data={item} index={index} self={this.props.self} sphere={this.props.sphere}/>
+             <MenuItem
+               data={item}
+               key={index}
+               self={this.props.self}
+               sphere={this.props.sphere}
+              />
           ))}
         </ul>
     );
@@ -245,7 +261,7 @@ class MenuItem extends React.Component {
   }
 
   handleClick(){
-    this.props.self.updatePost(this.props.data.title, this.props.data.image, this.props.data.description, this.props.index)
+    this.props.self.updatePost(this.props.data.title, this.props.data.image, this.props.data.description, this.props.key)
   }
 
   render() {
