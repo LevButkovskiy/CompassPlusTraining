@@ -1,0 +1,112 @@
+html {
+  background-color: #C2FFB8;
+}
+
+.mainHeader {
+  text-align: left;
+  margin: 2vh;
+  background-color: white;
+  padding: 30px 10%;
+  margin: 0
+}
+
+.backHeader {
+  text-align: left;
+  margin: 2vh;
+  background-color: white;
+  padding: 30px 10%;
+  margin: 0
+}
+
+.body {
+  background-color: #C2FFB8;
+  padding: 5vh 10%;
+}
+
+.button {
+  padding: 5px;
+  margin: 12.5% auto;
+  color: white;
+  text-align: center;
+  border-radius: 20px;
+}
+
+.button:hover {
+  background-color: #19D12B;
+}
+
+#buttonLink {
+  text-decoration: none;
+}
+
+#createTask {
+  background-color: #3A9E21;
+}
+
+#back {
+  background-color: #2980b9;
+}
+
+.taskBlock {
+  background-color: white;
+  border-radius: 20px;
+  margin: 5px;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+}
+
+.taskBlock:hover {
+  margin-top: 20px;
+}
+.taskBlock:hover:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 0 10000px rgba(255,255,255,0.4);
+}
+
+.taskImage {
+  width: 100%;
+  border-radius: 20px 20px 0px 0px;
+  filter: center;
+  overflow: hidden;
+  position: relative;
+  display: inline-block;
+  max-height: 20vh;
+}
+
+#taskLink {
+  text-decoration: none;
+  color: black
+}
+
+.taskTitle {
+  font-family: 'Arial';
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.descriptionBlock{
+  max-height: 15vh;
+  padding: 5px;
+}
+
+.taskDescription {
+  font-family: 'Arial';
+  font-size: 13px;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
