@@ -11,6 +11,9 @@
 #### [Calculator](https://github.com/LevButkovskiy/CompassPlusTraining/tree/master/Calculator) - Отчетное задание "Калькулятор"
 #### :white_check_mark: [Form](https://github.com/LevButkovskiy/CompassPlusTraining/tree/master/Form) - Отчетное задание "Форма перевода денежных средств"
 #### [React_site](https://github.com/LevButkovskiy/CompassPlusTraining/tree/master/newssite_react) - Отчетное задание "Single page application"
+#### [React_site](https://github.com/LevButkovskiy/CompassPlusTraining/tree/master/trello_pro) - Отчетное задание "Создание аналога Trello"
 -----------------------------------
 ### Want todo
+Посмотреть :after и :before в css
  > Тут будет то, что хотелось бы изучить. Помимо плана
+ 
