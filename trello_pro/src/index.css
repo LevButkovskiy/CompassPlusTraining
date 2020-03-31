@@ -14,7 +14,7 @@ html {
   text-align: left;
   margin: 2vh;
   background-color: white;
-  padding: 30px 10%;
+  padding: 5px 10%;
   margin: 0
 }
 
@@ -98,6 +98,55 @@ html {
   font-family: 'Arial';
   font-size: 13px;
   font-weight: 400;
+}
+
+.subTaskBlock {
+  background-color: #FAF7F7;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.subTask {
+  background-color: #FFFFFF;
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  margin: 10px;
+  padding-left: 5px;
+}
+
+.subTask:hover {
+  background-color: lightgray;
+  margin-left: 20px;
+}
+
+.addSubTask {
+  margin-left: 10px;
+  border-radius: 5px;
+  padding: 2px;
+  padding-left: 5px;
+}
+
+.addSubTask:hover {
+  background-color: lightgray;
+}
+
+.addSubTaskText {
+  font-family: 'Arial';
+  font-size: 15px;
+  font-weight: 400;
+  color: gray
+}
+
+.addSubTask < a {
+  text-decoration: none;
+}
+
+.popover {
+  border-radius: 20px;
+  opacity: 0.95;
+  padding: 10px;
+  text-align: center
 }
 
 body {

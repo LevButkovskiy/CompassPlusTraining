@@ -3,10 +3,6 @@ import {Col} from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 
 class Task extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render(){
     const href = "/task?id=" + this.props.task.id;
 
@@ -14,7 +10,7 @@ class Task extends React.Component {
         <Link to={href}>
           <a href="/edit.html" id="taskLink">
             <div className="taskBlock">
-              <img src="https://pbs.twimg.com/media/EJbgeutXUAAJ5ou.jpg:large" className="taskImage"/>
+              <img alt="taskImage" src="https://pbs.twimg.com/media/EJbgeutXUAAJ5ou.jpg:large" className="taskImage"/>
               <div className="p-2">
                 <span className="taskTitle">{this.props.task.title}</span><br />
                 <div className="descriptionBlock">
