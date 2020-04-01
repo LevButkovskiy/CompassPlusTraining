@@ -47,6 +47,10 @@ html {
   background-color: #2980b9;
 }
 
+#addBlock {
+  background-color: #2980b9;
+}
+
 .taskBlock {
   background-color: white;
   border-radius: 20px;
@@ -142,11 +146,24 @@ html {
   text-decoration: none;
 }
 
-.popover {
-  border-radius: 20px;
-  opacity: 0.95;
+.deleteButton {
+  float: right;
+  font-size: 10px;
+  margin: 2px;
+}
+
+.deleteButtonImg {
+  width: 15px;
+  height: 15px;
+}
+
+.subHeaderBlock {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #46ab46;
+  color: white;
   padding: 10px;
-  text-align: center
+  border-radius: 5px;
 }
 
 body {
